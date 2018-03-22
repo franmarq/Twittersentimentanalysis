@@ -1,0 +1,79 @@
+---
+title: "Twitter:<br>Sentiment Analysis App<br>"
+author: "franmarq@gmail.com"
+date: "21 de marzo de 2018"
+output: ioslides_presentation
+
+note: twitter sentiment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Twitter Sentiment Analysis App
+
+This App that let you get a feedback of a "term", in Real Time, from Twitter's users based in Sentiment Analysis Technique.
+
+**Sentiment Analysis:**
+"Opinion mining (sometimes known as sentiment analysis or emotion AI) refers to the use of natural language processing, text analysis, computational linguistics, and biometrics to systematically identify, extract, quantify, and study affective states and subjective information".
+(https://en.wikipedia.org/wiki/Sentiment_analysis).
+
+
+## How to use the App
+-You only has to enter the term search, run the App with the 'Submit' button, and wait for the results from analysis.
+
+-The result is a frecuency's plot that shows the term's opinions in three categories: positive, negative and neutral. A wordcloud's plot is including for each category.
+
+-This app is designed to show 'the sentiment' from the most popular 100 opinions in Spanish.
+
+-Feel free to test the app at: https://franmarq.shinyapps.io/TwitterSentimentAnalysis/
+
+
+## The app contents
+
+- **SeachTwitter Package: **
+This function will issue a search of Twitter based on a supplied search string.
+
+the code used (a part):
+```{r,echo=TRUE,eval=FALSE}
+searchTwitter(input$search1,n=100,resultType="popular",lang = "es")
+```
+
+- **Text Mining (tm) package:**
+The tm package offers functionality for managing text documents, abstracts the process of document manipulation and eases the usage of heterogeneous text formats in R.
+
+the code used (a part):
+```{r,echo=TRUE,eval=FALSE}
+if (grepl(paste(t1, collapse = "|"), tweet$text, ignore.case = FALSE, 
+          perl = TRUE) == TRUE ){ count_positive = count_positive + 1
+```
+
+
+## The result
+
+You can get a result such as the one shown below: 
+
+<img src="/Users/javier/Data Science Specialization/9. Developing Data Products/Semana 4/TwitterSentimentAnalysis/img1.PNG"; style="max-width:800px;float:right;">
+
+
+## The parameters
+
+Tha alghoritm uses some words to select if the opinion is "positive", "negative" or else "neutral".
+In this App i used these words:
+
+        t1 <- c("bueno", "gracias","bien","excelente","puntual",
+                "honesto","confiable","rapido","seguro","buen servicio",
+                "puntualidad","amable","calidad","buena atencion",
+                "disponible", "fiesta","prestame","efectivo","puedes",
+                "disfruta")
+        t2 <- c("malo", "pesimo","mal","terrible","inpuntual","deshonesto",
+                "terrible","lento","inseguro","largas","colas","corrupto",
+                "dictadura","regimen","hambre","escazes","corupcion","abuso",
+                "presos","protestas","robaron","protestar","justicia",
+                "comer basura","renuncia","saqueo","dictador","renuncia",
+                "sanciones","tirano",
+                "hiperinflacion")
+t1: Positive,
+t2: Negative,
+Else: Neutral

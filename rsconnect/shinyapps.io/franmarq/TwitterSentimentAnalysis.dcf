@@ -1,0 +1,12 @@
+name: TwitterSentimentAnalysis
+title: TwitterSentimentAnalysis
+username:
+account: franmarq
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 302004
+bundleId: 1281766
+url: https://franmarq.shinyapps.io/TwitterSentimentAnalysis/
+when: 1521697707.0521
+asMultiple: FALSE
+asStatic: FALSE
